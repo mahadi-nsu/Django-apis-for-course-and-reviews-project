@@ -17,3 +17,7 @@ from .serializers import (
 class ListCreateCourse(generics.ListCreateAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+
+class RetrieveUpdateDestroyCourse(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer    
