@@ -10,8 +10,7 @@ from .models import (
 
 from .serializers import (
     CourseSerializer,
-    ReviewSeriaizer,
-    
+    ReviewSeriaizer,   
 )    
 
 class ListCreateCourse(generics.ListCreateAPIView):
@@ -20,4 +19,15 @@ class ListCreateCourse(generics.ListCreateAPIView):
 
 class RetrieveUpdateDestroyCourse(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
-    serializer_class = CourseSerializer    
+    serializer_class = CourseSerializer     
+
+class ListCreateReview(generics.ListCreateAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSeriaizer 
+
+    def get_queryset(self):
+        return self.queryset.filter(course_id = self.kwargs.get('course_pk'))
+
+class RetrieveUpdateDestroyReview(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSeriaizer         

@@ -20,7 +20,8 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls',
-                             namespace='rest_framework')),
+                              namespace='rest_framework')),
     # url(r'', include('apis.urls','reviews'), namespace='reviews'),
-    url(r'^api/v1/courses', include('apis.urls'), name="apis"),
+    # url(r'^api/v1/courses/', include('apis.urls'), name="apis"),
+    path('api/v1/courses/',include('apis.urls'))
 ]
